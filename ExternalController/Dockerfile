@@ -11,6 +11,10 @@ ENV PYTHONUNBUFFERED=1
 COPY requirements.txt .
 RUN python -m pip install -r requirements.txt
 
+# Install the hoi_client
+COPY ./HOI.py ./HOI.py
+RUN cd HOI.py && python setup.py install && cd ..
+
 WORKDIR /app
 COPY . /app
 
