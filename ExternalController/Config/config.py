@@ -32,7 +32,6 @@ def gather_config(file_name = None, env_pw_name = "hoi_mdc_pw"):
     with open(file_name , "r") as File:
         data = json.loads(File.read())
         password = os.environ.get(env_pw_name)
-        print(password)
         data["password"] = password
         if env_pw_name != "hoi_mdc_pw":
             return data
