@@ -7,16 +7,21 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Install pip requirements
-COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
-
-# Install the hoi_client
-COPY ./HOI.py ./HOI.py
-RUN cd HOI.py && python setup.py install && cd ..
-
 WORKDIR /app
 COPY . /app
+
+# Install pip requirements
+COPY requirements.txt .
+RUN python3 -m pip install -r requirements.txt
+
+WORKDIR ./HOI.py
+
+COPY ../HOI.py .
+
+RUN python setup.py install 
+
+WORKDIR /
+WORKDIR /app
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers

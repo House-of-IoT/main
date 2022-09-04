@@ -1,1 +1,1 @@
-{"host": "localhost", "port": 50888, "name": "ExternalController", "type": "non-bot"}
+{"host": "general_server", "port": 50888, "name": "ExternalController", "type": "non-bot"}

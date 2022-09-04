@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  general_server:
+    build: ./HOI-GeneralServer
+    ports: 
+      - "50888:50888"
+  external_controller:
+    build: ./ExternalController
+    ports:
+      - "50889:50889"
